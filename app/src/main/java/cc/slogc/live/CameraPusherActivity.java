@@ -34,11 +34,13 @@ import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.*;
+
 import com.tencent.rtmp.ITXLivePushListener;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -178,6 +180,7 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
         }
     }
 
+    //检查权限
     private boolean checkPublishPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
             List<String> permissions = new ArrayList<>();
@@ -224,7 +227,7 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
      * @return
      */
     private boolean startRTMPPush() {
-        String tRTMPURL = "rtmp://livepush.slogc.cc/live/123?txSecret=9e94611969cb1658a924c51826aa8f30&txTime=5D7919FF";
+        String tRTMPURL = "rtmp://livepush.slogc.cc/live/123?txSecret=0ab1afbc91d40f6ad938a6f0afa7e872&txTime=5D7A6B7F";
 //        String inputUrl = mEtRTMPURL.getText().toString();
 //        if (!TextUtils.isEmpty(inputUrl)) {
 //            String url[] = inputUrl.split("###");
@@ -232,15 +235,16 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
 //                tRTMPURL = url[0];
 //            }
 //        }
-//
-//        if (TextUtils.isEmpty(tRTMPURL) || (!tRTMPURL.trim().toLowerCase().startsWith("rtmp://"))) {
-//            Toast.makeText(getApplicationContext(), "推流地址不合法，目前支持rtmp推流!", Toast.LENGTH_SHORT).show();
-//
-//            // 输出状态log
-//            Bundle params = new Bundle();
-//            params.putString(TXLiveConstants.EVT_DESCRIPTION, "检查地址合法性");
-//            return false;
-//        }
+
+        if (TextUtils.isEmpty(tRTMPURL) || (!tRTMPURL.trim().toLowerCase().startsWith("rtmp://"))) {
+            Toast.makeText(getApplicationContext(), "推流地址不合法，目前支持rtmp推流!", Toast.LENGTH_SHORT).show();
+
+            // 输出状态log
+            Bundle params = new Bundle();
+            params.putString(TXLiveConstants.EVT_DESCRIPTION, "检查地址合法性");
+            return false;
+        }
+
         // 显示本地预览的View
         mPusherView.setVisibility(View.VISIBLE);
 
@@ -271,10 +275,10 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
         mLivePusher.startCameraPreview(mPusherView);
         // 发起推流
 
-        Log.i("tRTMPURL.trim()","tRTMPURL.trim():"+tRTMPURL.trim());
+        Log.i("tRTMPURL.trim()", "tRTMPURL.trim():" + tRTMPURL.trim());
 
         int ret = mLivePusher.startPusher(tRTMPURL.trim());
-        Log.i("啦啦啦啦啦啦啦啦","ret:"+ret);
+        Log.i("啦啦啦啦啦啦啦啦", "ret:" + ret);
 
         if (ret == -5) {
             String errInfo = "License 校验失败";
@@ -306,6 +310,10 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
             });
             dialogBuidler.show();
             return false;
+        } else if (ret == 0) {
+            Toast.makeText(getApplicationContext(), "推流成功，赶紧开始跳舞吧", Toast.LENGTH_LONG).show();
+        } else if (ret == -1) {
+            Toast.makeText(getApplicationContext(), "推流失败，状态码-1，你个垃圾", Toast.LENGTH_LONG).show();
         }
 
 
