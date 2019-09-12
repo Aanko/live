@@ -16,6 +16,11 @@
             android:id="@+id/tiaozhuan"
             android:layout_width="137dp"
             android:layout_height="137dp"
+            android:text="跳转"/>toplay
+    <Button
+            android:id="@+id/toplay"
+            android:layout_width="137dp"
+            android:layout_height="137dp"
             android:text="跳转"/>
 
 

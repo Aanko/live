@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.tencent.liteavsdk:LiteAVSDK_Smart:6.6.7551@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc7371bb453f4ff27f2ffa09691ee67b/jars/libs/LiteAVSDK_Smart-6.5.7272.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc7371bb453f4ff27f2ffa09691ee67b/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc7371bb453f4ff27f2ffa09691ee67b/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/50ddcc5bc1c9c3fefba778748fe93bcd/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/50ddcc5bc1c9c3fefba778748fe93bcd/jars/libs/LiteAVSDK_Smart-6.5.7272.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/50ddcc5bc1c9c3fefba778748fe93bcd/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
