@@ -3,7 +3,6 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/colorPrimary"
               android:orientation="vertical">
 
     <FrameLayout
@@ -15,8 +14,7 @@
                 android:id="@+id/video_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:visibility="visible"/>
+                android:background="@color/colorPrimary"/>
         <Button
                 android:id="@+id/btnPlay"
                 android:layout_width="wrap_content"
