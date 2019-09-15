@@ -145,7 +145,6 @@ public class LivePlayerActivity extends Activity implements ITXLivePlayListener,
         });
 
         mPlayerView = (TXCloudVideoView) findViewById(R.id.video_view);
-        mPlayerView.setLogMargin(12, 12, 110, 60);
         mPlayerView.showLog(false);
         if (mLivePlayer == null) {
             mLivePlayer = new TXLivePlayer(this);

@@ -128,7 +128,8 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
                     boolean isSuccess = startRTMPPush();
                     Log.i("开始", "开始");
                 } else {
-
+                    stopRTMPPush();
+                    Toast.makeText(getApplicationContext(), "停止推流!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -315,9 +316,30 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
         } else if (ret == -1) {
             Toast.makeText(getApplicationContext(), "推流失败，状态码-1，你个垃圾", Toast.LENGTH_LONG).show();
         }
-
-
+        mIsPushing = true;
         return true;
+    }
+
+
+    /**
+     * 停止 RTMP 推流
+     */
+    private void stopRTMPPush() {
+
+        // 停止BGM
+        mLivePusher.stopBGM();
+        // 停止本地预览
+        mLivePusher.stopCameraPreview(true);
+        // 移除监听
+        mLivePusher.setPushListener(null);
+        // 停止推流
+        mLivePusher.stopPusher();
+        // 隐藏本地预览的View
+        mPusherView.setVisibility(View.GONE);
+        // 移除垫片图像
+        mLivePushConfig.setPauseImg(null);
+
+        mIsPushing = false;
     }
 
 

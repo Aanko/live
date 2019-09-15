@@ -1,14 +1,7 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/root"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
-
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="0dp">
+              android:layout_height="match_parent">
 
         <com.tencent.rtmp.ui.TXCloudVideoView
                 android:id="@+id/video_view"
@@ -21,7 +14,6 @@
                 android:layout_height="wrap_content"
                 android:text="开始播放"
         />
-    </FrameLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
