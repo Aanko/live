@@ -240,12 +240,6 @@ public class LivePlayerActivity extends Activity implements ITXLivePlayListener,
         Bundle params = new Bundle();
         params.putString(TXLiveConstants.EVT_DESCRIPTION, "检查地址合法性");
 
-//        mRootView.setBackgroundColor(0xff000000);
-
-        Log.i("mLivePlayer","mLivePlayer:"+mLivePlayer);
-        Log.i("mPlayerView","mPlayerView:"+mPlayerView);
-
-
         mLivePlayer.setPlayerView(mPlayerView);
 
         mLivePlayer.setPlayListener(this);

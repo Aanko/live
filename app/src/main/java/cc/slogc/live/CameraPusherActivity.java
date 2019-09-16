@@ -133,7 +133,21 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
                 }
             }
         });
+//        切换摄像头
+        findViewById(R.id.pusher_btn_switch_camera).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 表明当前是前摄像头
+                if (v.getTag() == null || (Boolean) v.getTag()) {
+                    v.setTag(false);
+                } else {
+                    v.setTag(true);
+                }
+                mLivePusher.switchCamera();
+            }
+        });
     }
+
 
     /**
      * 初始化 美颜、log、二维码 等 view
@@ -252,8 +266,6 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
         // 输出状态log
         Bundle params = new Bundle();
         params.putString(TXLiveConstants.EVT_DESCRIPTION, "检查地址合法性");
-
-
         // 添加播放回调
         mLivePusher.setPushListener(this);
         mLivePusher.setBGMNofify(this);
@@ -271,11 +283,10 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
         // 设置推流配置
         mLivePusher.setConfig(mLivePushConfig);
 
-
         // 设置本地预览View
         mLivePusher.startCameraPreview(mPusherView);
+        
         // 发起推流
-
         Log.i("tRTMPURL.trim()", "tRTMPURL.trim():" + tRTMPURL.trim());
 
         int ret = mLivePusher.startPusher(tRTMPURL.trim());
@@ -342,6 +353,14 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
         mIsPushing = false;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopRTMPPush(); // 停止推流
+        if (mPusherView != null) {
+            mPusherView.onDestroy(); // 销毁 View
+        }
+    }
 
     @Override
     public void onPushEvent(int i, Bundle bundle) {

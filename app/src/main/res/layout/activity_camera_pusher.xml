@@ -6,15 +6,19 @@
     <com.tencent.rtmp.ui.TXCloudVideoView
         android:id="@+id/pusher_tx_cloud_view"
         android:layout_width="match_parent"
-        android:background="@color/colorAccent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@mipmap/main_bkg" />
 
-
-        <Button
-            android:id="@+id/pusher_btn_start"
-            android:layout_width="137dp"
-            android:layout_height="137dp"
-            android:text="开始直播"
-        />
+    <Button
+        android:id="@+id/pusher_btn_start"
+        android:layout_width="137dp"
+        android:layout_height="137dp"
+        android:text="开始直播" />
+    <Button
+        android:id="@+id/pusher_btn_switch_camera"
+        android:layout_width="137dp"
+        android:layout_margin="139dp"
+        android:layout_height="137dp"
+        android:text="切换摄像头" />
 
 </RelativeLayout>
