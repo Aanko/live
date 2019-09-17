@@ -253,16 +253,13 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
 
         if (TextUtils.isEmpty(tRTMPURL) || (!tRTMPURL.trim().toLowerCase().startsWith("rtmp://"))) {
             Toast.makeText(getApplicationContext(), "推流地址不合法，目前支持rtmp推流!", Toast.LENGTH_SHORT).show();
-
             // 输出状态log
             Bundle params = new Bundle();
             params.putString(TXLiveConstants.EVT_DESCRIPTION, "检查地址合法性");
             return false;
         }
-
         // 显示本地预览的View
         mPusherView.setVisibility(View.VISIBLE);
-
         // 输出状态log
         Bundle params = new Bundle();
         params.putString(TXLiveConstants.EVT_DESCRIPTION, "检查地址合法性");
@@ -285,7 +282,7 @@ public class CameraPusherActivity extends Activity implements ITXLivePushListene
 
         // 设置本地预览View
         mLivePusher.startCameraPreview(mPusherView);
-        
+
         // 发起推流
         Log.i("tRTMPURL.trim()", "tRTMPURL.trim():" + tRTMPURL.trim());
 
